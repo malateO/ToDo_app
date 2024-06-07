@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
@@ -9,6 +10,8 @@
   --color3: white;
   --color4: azure;
   --color5: rgba(16, 183, 8, 0.733);
+  --color6: rgb(36, 57, 161);
+  --color7: rgb(240, 144, 144);
 }
 
 body {
@@ -18,7 +21,7 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  background: var(--color1);
+  background: var(--color7);
 }
 
 header {
@@ -27,7 +30,7 @@ header {
 }
 
 header h1 {
-  color: var(--color2);
+  color: var(--color6);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 50px;
 }
@@ -50,4 +53,75 @@ header h1 {
   color: var(--color4);
   background-color: var(--color5);
   border: 1px solid var(--color3);
+}
+
+/* modal */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: solid 1px black;
+  border-radius: 10px;
+  z-index: 30;
+  background-color: rgb(94, 244, 25);
+  width: 300px;
+  max-width: 80%;
+}
+
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.modal-header .modal-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal-header .modal-close {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* modal body */
+.modal-body {
+  padding: 10px 15px;
+}
+
+/* form */
+.input-task {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  transition: 200ms ease-in-out;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
 }

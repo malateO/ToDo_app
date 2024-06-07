@@ -13,8 +13,32 @@
       <h1>TODO LIST</h1>
     </header>
     <main class="content">
-      <button class="add-task-button">ADD TASK</button>
-      <div class="content-container"></div>
+      <button data-modal-open="#modal" class="add-task-button" id="add-task">
+        ADD TASK
+      </button>
+      <div class="modal" id="modal">
+        <div class="modal-header">
+          <h4 class="modal-title">Add Your Task</h4>
+          <button data-close-button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form action="" class="input-task">
+            <label for="title-name">Title</label>
+            <input type="text" placeholder="Task Title" name="title-name" />
+            <label for="task-date">Date</label>
+            <input type="date" name="task-date" />
+            <label for="task-description">Description</label>
+            <textarea
+              name="task-description"
+              id=""
+              placeholder="Add Description"
+            ></textarea>
+            <button type="submit">Add</button>
+          </form>
+        </div>
+      </div>
+      <div id="overlay"></div>
+      <div class="task-list-content"></div>
     </main>
 
     <script src="script.js"></script>
