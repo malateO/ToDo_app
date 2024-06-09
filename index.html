@@ -16,6 +16,7 @@
       <button data-modal-open="#modal" class="add-task-button" id="add-task">
         ADD TASK
       </button>
+      <div class="task-list-content"></div>
       <div class="modal" id="modal">
         <div class="modal-header">
           <h4 class="modal-title">Add Your Task</h4>
@@ -38,12 +39,13 @@
               id="task-description"
               placeholder="Add Description"
             ></textarea>
-            <button type="submit" id="submit-task">Add</button>
+            <button data-close-button type="submit" id="submit-task">
+              Add
+            </button>
           </form>
         </div>
       </div>
       <div id="overlay"></div>
-      <div class="task-list-content"></div>
     </main>
 
     <script src="script.js"></script>

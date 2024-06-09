@@ -13,21 +13,26 @@ const taskList = document.querySelector(".task-list-content");
 const todoList = [];
 
 // get the value in the forms
-// save to local storage
+
 const submitTask = () => {
   const todoDetails = {
     title: titleElement.value,
     date: dateElement.value,
     description: descElement.value,
   };
-  todoList.push(todoDetails);
+  // save to local storage
+  todoList.unshift(todoDetails);
+  displayTask();
   console.log(todoList);
-  todoList.forEach(({ title, date, description }) => {
-    taskList.innerHTML = `<p>${title}</p><p>${date}</p><p>${description}</p>`;
-  });
 };
 
-// display in the todo list content
+const displayTask = () => {
+  taskList.innerHTML = "";
+  // display in the todo list content
+  todoList.forEach(({ title, date, description }) => {
+    taskList.innerHTML += `<p>${title}</p><p>${date}</p><p>${description}</p>`;
+  });
+};
 
 // functions for modal
 openModalBtn.forEach((button) => {
@@ -49,10 +54,9 @@ overlay.addEventListener("click", () => {
   modals.forEach((modal) => closeModal(modal));
 });
 
-// submit button animation IP
 submitTaskBtn.addEventListener("click", (e) => {
-  e.preventDefault();
   submitTask();
+  e.preventDefault();
 });
 
 function openModal(modal) {
