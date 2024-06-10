@@ -30,7 +30,12 @@ const displayTask = () => {
   taskList.innerHTML = "";
   // display in the todo list content
   todoList.forEach(({ title, date, description }) => {
-    taskList.innerHTML += `<p>${title}</p><p>${date}</p><p>${description}</p>`;
+    taskList.innerHTML += `<div class = "todo-list-cont-js"><p class="todo-list-p-js">Title: <span class = "todo-list-js">${title}</span></p>
+    <p class="todo-list-p-js">Date: <span class = "todo-list-js">${date}</span></p>
+    <p class="todo-list-p-js">Description: <span class = "todo-list-js">${description}</span></p>
+    <button>Update</button>
+    <button>Delete</button>
+    </div>`;
   });
 };
 
@@ -56,6 +61,9 @@ overlay.addEventListener("click", () => {
 
 submitTaskBtn.addEventListener("click", (e) => {
   submitTask();
+  titleElement.value = "";
+  dateElement.value = "";
+  descElement.value = "";
   e.preventDefault();
 });
 

@@ -169,6 +169,7 @@ header h1 {
 
 .task-list-content {
   position: fixed;
+  display: flex;
   flex-direction: column;
   border: 1px solid black;
   width: 450px;
@@ -177,4 +178,24 @@ header h1 {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 15px;
+  overflow: auto;
+  gap: 1rem;
+}
+
+.todo-list-cont-js {
+  border-bottom: 2px solid black;
+  padding-bottom: 10px;
+}
+
+.todo-list-p-js {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  font-size: 17px;
+  color: rgb(30, 18, 18);
+}
+
+.todo-list-js {
+  color: aliceblue;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
 }
