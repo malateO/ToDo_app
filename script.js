@@ -21,6 +21,8 @@ const submitTask = () => {
     date: dateElement.value,
     description: descElement.value,
   };
+
+  // submitTaskBtn.removeAttribute("data-close-button");
   // save to local storage
   todoList.unshift(todoDetails);
   displayTask();
@@ -60,15 +62,19 @@ overlay.addEventListener("click", () => {
 });
 
 submitTaskBtn.addEventListener("click", (e) => {
-  submitTask();
-  e.preventDefault();
-  titleElement.value = "";
-  dateElement.value = "";
-  descElement.value = "";
+  if (titleElement.value == "" || dateElement.value == "") {
+    modal.classList.add("active");
+    overlay.classList.add("active");
+  } else {
+    e.preventDefault();
+    submitTask();
+    titleElement.value = "";
+    dateElement.value = "";
+    descElement.value = "";
+  }
 });
 
 cancelTaksBtn.addEventListener("click", (e) => {
-  e.preventDefault();
   titleElement.value = "";
   dateElement.value = "";
   descElement.value = "";
