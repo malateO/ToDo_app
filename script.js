@@ -3,6 +3,7 @@ const openModalBtn = document.querySelectorAll("[data-modal-open]");
 const closeModalBtn = document.querySelectorAll("[data-close-button]");
 const overlay = document.getElementById("overlay");
 const submitTaskBtn = document.getElementById("submit-task");
+const cancelTaksBtn = document.getElementById("cancel-task");
 // input variables
 const titleElement = document.getElementById("task-title");
 const dateElement = document.getElementById("task-date");
@@ -23,7 +24,6 @@ const submitTask = () => {
   // save to local storage
   todoList.unshift(todoDetails);
   displayTask();
-  console.log(todoList);
 };
 
 const displayTask = () => {
@@ -61,10 +61,17 @@ overlay.addEventListener("click", () => {
 
 submitTaskBtn.addEventListener("click", (e) => {
   submitTask();
+  e.preventDefault();
   titleElement.value = "";
   dateElement.value = "";
   descElement.value = "";
+});
+
+cancelTaksBtn.addEventListener("click", (e) => {
   e.preventDefault();
+  titleElement.value = "";
+  dateElement.value = "";
+  descElement.value = "";
 });
 
 function openModal(modal) {

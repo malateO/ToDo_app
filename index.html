@@ -23,25 +23,32 @@
           <button data-close-button class="modal-close">&times;</button>
         </div>
         <div class="modal-body">
-          <form action="" class="input-task">
+          <form action="" method="post" class="input-task">
             <label for="title-name">Title</label>
             <input
               type="text"
               placeholder="Task Title"
               name="title-name"
               id="task-title"
+              required
             />
             <label for="task-date">Date</label>
-            <input type="date" name="task-date" id="task-date" />
+            <input type="date" name="task-date" id="task-date" required />
             <label for="task-description">Description</label>
             <textarea
               name="task-description"
               id="task-description"
               placeholder="Add Description"
+              required
             ></textarea>
-            <button data-close-button type="submit" id="submit-task">
-              Add
-            </button>
+            <div class="form-button">
+              <button data-close-button type="submit" id="submit-task">
+                Add
+              </button>
+              <button data-close-button type="button" id="cancel-task">
+                Cancel
+              </button>
+            </div>
           </form>
         </div>
       </div>
