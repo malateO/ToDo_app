@@ -198,7 +198,9 @@ header h1 {
 }
 
 .todo-list-cont-js {
-  border-bottom: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 4px double rgb(2, 51, 5);
   padding-bottom: 10px;
 }
 
@@ -213,4 +215,35 @@ header h1 {
   color: aliceblue;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
+}
+
+.todo-list-js-btndiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.todo-list-btn-js {
+  height: 30px;
+  width: 100px;
+  cursor: pointer;
+  border: none;
+  border-radius: 7px;
+  color: rgb(246, 246, 235);
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.todo-list-js-btndiv .update {
+  text-align: center;
+  padding: 3px;
+  background-color: rgba(63, 135, 242, 0.789);
+}
+
+.todo-list-js-btndiv .delete {
+  text-align: center;
+  padding: 3px;
+  background-color: rgba(241, 17, 17, 0.789);
 }
