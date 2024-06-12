@@ -11,7 +11,7 @@ const descElement = document.getElementById("task-description");
 // todo list content variable
 const taskList = document.querySelector(".task-list-content");
 
-const todoList = [];
+const todoList = JSON.parse(localStorage.getItem("todoStorage")) || [];
 
 // get the value in the forms
 
@@ -24,7 +24,9 @@ const submitTask = () => {
 
   // submitTaskBtn.removeAttribute("data-close-button");
   // save to local storage
+
   todoList.unshift(todoDetails);
+  localStorage.setItem("todoStorage", JSON.stringify(todoList));
   displayTask();
 };
 
@@ -47,6 +49,10 @@ const displayTask = () => {
     `;
   });
 };
+
+// update button functions
+
+const updateTodoList = () => {};
 
 // functions for modal
 openModalBtn.forEach((button) => {
