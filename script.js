@@ -54,8 +54,8 @@ displayTask();
 const updateTodoList = () => {
   const overlay = document.getElementById("overlay");
   const modal = document.getElementById("modal");
-  modal.classList.add("active");
-  overlay.classList.add("active");
+  modal.classList.toggle("active");
+  overlay.classList.toggle("active");
 };
 
 // functions for modal
