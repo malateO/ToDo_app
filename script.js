@@ -14,7 +14,6 @@ const taskList = document.querySelector(".task-list-content");
 const todoList = JSON.parse(localStorage.getItem("todoStorage")) || [];
 
 // get the value in the forms
-
 const submitTask = () => {
   const todoDetails = {
     title: titleElement.value,
@@ -22,9 +21,7 @@ const submitTask = () => {
     description: descElement.value,
   };
 
-  // submitTaskBtn.removeAttribute("data-close-button");
   // save to local storage
-
   todoList.unshift(todoDetails);
   localStorage.setItem("todoStorage", JSON.stringify(todoList));
   displayTask();
@@ -42,7 +39,7 @@ const displayTask = () => {
         <p class="todo-list-p-js">Description: <span class = "todo-list-js">${description}</span></p>
       </div>
       <div class = "todo-list-js-btndiv">
-        <button class = "todo-list-btn-js update">Update</button>
+        <button onclick = "updateTodoList(this)" class = "todo-list-btn-js update">Update</button>
         <button class = "todo-list-btn-js delete">Delete</button>
       </div>
     </div>
@@ -50,9 +47,16 @@ const displayTask = () => {
   });
 };
 
+displayTask();
+
 // update button functions
 
-const updateTodoList = () => {};
+const updateTodoList = () => {
+  const overlay = document.getElementById("overlay");
+  const modal = document.getElementById("modal");
+  modal.classList.add("active");
+  overlay.classList.add("active");
+};
 
 // functions for modal
 openModalBtn.forEach((button) => {
