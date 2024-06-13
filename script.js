@@ -12,10 +12,15 @@ const descElement = document.getElementById("task-description");
 const taskList = document.querySelector(".task-list-content");
 
 const todoList = JSON.parse(localStorage.getItem("todoStorage")) || [];
+let currentTask = {};
 
 // get the value in the forms
 const submitTask = () => {
   const todoDetails = {
+    id: `${titleElement.value
+      .toLowerCase()
+      .split(" ")
+      .join("-")}-${Date.now()}`,
     title: titleElement.value,
     date: dateElement.value,
     description: descElement.value,
@@ -51,7 +56,7 @@ displayTask();
 
 // update button functions
 
-const updateTodoList = () => {
+const updateTodoList = (button) => {
   const overlay = document.getElementById("overlay");
   const modal = document.getElementById("modal");
   modal.classList.toggle("active");
