@@ -16,6 +16,7 @@ let currentTask = {};
 
 // get the value in the forms
 const submitTask = () => {
+  const dataArrIndex = todoList.findIndex((item) => item.id === currentTask.id);
   const todoDetails = {
     id: `${titleElement.value
       .toLowerCase()
@@ -26,8 +27,13 @@ const submitTask = () => {
     description: descElement.value,
   };
 
+  if (dataArrIndex === -1) {
+    todoList.unshift(todoDetails);
+  } else {
+    todoList[dataArrIndex] = todoDetails;
+  }
+
   // save to local storage
-  todoList.unshift(todoDetails);
   localStorage.setItem("todoStorage", JSON.stringify(todoList));
   displayTask();
 };
@@ -35,15 +41,15 @@ const submitTask = () => {
 const displayTask = () => {
   taskList.innerHTML = "";
   // display in the todo list content
-  todoList.forEach(({ title, date, description }) => {
+  todoList.forEach(({ id, title, date, description }) => {
     taskList.innerHTML += `
     <div class = "todo-list-cont-js">
-      <div class = "todo-list-js-pdiv">      
+      <div class = "todo-list-js-pdiv"  id = "${id}">      
         <p class="todo-list-p-js">Title: <span class = "todo-list-js">${title}</span></p>
         <p class="todo-list-p-js">Date: <span class = "todo-list-js">${date}</span></p>
         <p class="todo-list-p-js">Description: <span class = "todo-list-js">${description}</span></p>
       </div>
-      <div class = "todo-list-js-btndiv">
+      <div class = "todo-list-js-btndiv" id = "${id}">
         <button onclick = "updateTodoList(this)" class = "todo-list-btn-js update">Update</button>
         <button class = "todo-list-btn-js delete">Delete</button>
       </div>
@@ -51,12 +57,21 @@ const displayTask = () => {
     `;
   });
 };
-
 displayTask();
 
 // update button functions
 
 const updateTodoList = (button) => {
+  const dataArrIndex = todoList.findIndex(
+    (item) => item.id === button.parentElement.id
+  );
+
+  currentTask = todoList[dataArrIndex];
+
+  titleElement.value = currentTask.title;
+  dateElement.value = currentTask.date;
+  descElement.value = currentTask.description;
+
   const overlay = document.getElementById("overlay");
   const modal = document.getElementById("modal");
   modal.classList.toggle("active");
