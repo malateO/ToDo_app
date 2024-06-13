@@ -51,7 +51,7 @@ const displayTask = () => {
       </div>
       <div class = "todo-list-js-btndiv" id = "${id}">
         <button onclick = "updateTodoList(this)" class = "todo-list-btn-js update">Update</button>
-        <button class = "todo-list-btn-js delete">Delete</button>
+        <button onclick = "deleteTodoList(this)" class = "todo-list-btn-js delete">Delete</button>
       </div>
     </div>
     `;
@@ -60,7 +60,6 @@ const displayTask = () => {
 displayTask();
 
 // update button functions
-
 const updateTodoList = (button) => {
   const dataArrIndex = todoList.findIndex(
     (item) => item.id === button.parentElement.id
@@ -76,6 +75,19 @@ const updateTodoList = (button) => {
   const modal = document.getElementById("modal");
   modal.classList.toggle("active");
   overlay.classList.toggle("active");
+};
+
+// delete button functions
+const deleteTodoList = (button) => {
+  const taskListParentEl = document.querySelector(".todo-list-cont-js");
+  const dataArrIndex = todoList.findIndex(
+    (item) => item.id === button.parentElement.id
+  );
+
+  taskListParentEl.remove();
+  button.parentElement.remove();
+  todoList.splice(dataArrIndex, 1);
+  localStorage.setItem("todoStorage", JSON.stringify(todoList));
 };
 
 // functions for modal

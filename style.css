@@ -186,7 +186,7 @@ header h1 {
   position: fixed;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 450px;
   height: 400px;
   top: 62%;
@@ -206,7 +206,7 @@ header h1 {
 }
 
 .todo-list-js-pdiv {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   overflow: auto;
 }
 
